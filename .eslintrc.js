@@ -7,7 +7,34 @@ module.exports = {
   'extends': [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
+  ],
+  overrides: [
+    // override "simple-import-sort" config
+    {
+      'files': ['*.js', '*.jsx', '*.ts', '*.tsx'],
+      'rules': {
+        'simple-import-sort/imports': [
+          'error',
+          {
+            'groups': [
+              // Packages `react` related packages come first.
+              ['^react', '^@?\\w'],
+              // Internal packages.
+              ['^(@|components)(/.*|$)'],
+              // Side effect imports.
+              ['^\\u0000'],
+              // Parent imports. Put `..` last.
+              ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+              // Other relative imports. Put same-folder imports and `.` last.
+              ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+              // Style imports.
+              ['^.+\\.?(css)$']
+            ]
+          }
+        ]
+      }
+    }
   ],
   'parser': '@typescript-eslint/parser',
   'parserOptions': {
@@ -16,7 +43,8 @@ module.exports = {
   },
   'plugins': [
     'react',
-    '@typescript-eslint'
+    '@typescript-eslint',
+    'eslint-plugin-simple-import-sort'
   ],
   'rules': {
     'indent': [
@@ -34,6 +62,9 @@ module.exports = {
     'semi': [
       'error',
       'always'
-    ]
+    ],
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+    '@typescript-eslint/consistent-type-imports': 'warn'
   }
 };
