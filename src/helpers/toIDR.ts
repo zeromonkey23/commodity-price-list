@@ -1,3 +1,5 @@
-export const toIDR = (value: number) => {
+const toIDR = (value: number) => {
   return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value || 0);
 };
+
+export default toIDR;

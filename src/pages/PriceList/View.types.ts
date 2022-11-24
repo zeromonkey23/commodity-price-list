@@ -9,3 +9,9 @@ export interface Commodity {
   tgl_parsed: string;
   timestamp: string;
 }
+
+export interface CommodityInput {
+  [key: string]: unknown;
+  limit: number;
+  offset: number;
+}
