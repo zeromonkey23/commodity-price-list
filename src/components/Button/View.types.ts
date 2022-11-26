@@ -5,4 +5,5 @@ export interface ButtonProps {
   children?: ReactNode;
   disabled?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  type?: 'primary' | 'default'
 }
