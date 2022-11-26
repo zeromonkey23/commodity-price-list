@@ -14,4 +14,13 @@ export interface CommodityInput {
   [key: string]: unknown;
   limit: number;
   offset: number;
+  search: string;
+}
+
+export interface SizeOption {
+  size: string;
+}
+export interface AreaOption {
+  province: string;
+  city: string;
 }

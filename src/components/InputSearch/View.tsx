@@ -1,6 +1,13 @@
 import React from 'react';
 
-const InputSearch = () => {
+import noop from '../../helpers/noop';
+
+import useView from './View.hooks';
+import type {InputSearchProps} from './View.types';
+
+const InputSearch = (props: InputSearchProps) => {
+  const {value, placeholder, className, onChange, onEnter = noop} = props;
+  const {onKeyPress} = useView({onEnter});
   return (
     <div className="relative">
       <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -10,9 +17,10 @@ const InputSearch = () => {
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
         </svg>
       </div>
-      <input type="search" id="default-search"
-        className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-        placeholder="Search Mockups, Logos..." required/>
+      <input type="text" value={value} onChange={onChange} onKeyDown={onKeyPress}
+        className={`block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50
+        focus:ring-blue-500 focus:border-blue-500 ${className}`}
+        placeholder={placeholder}/>
     </div>
   );
 };

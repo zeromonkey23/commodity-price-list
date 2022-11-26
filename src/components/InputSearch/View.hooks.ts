@@ -1,8 +1,8 @@
 import type {KeyboardEvent} from 'react';
 
-import type {InputHooksProps} from './View.types';
+import type {InputSearchHooksProps} from './View.types';
 
-const useView = ({onEnter}: InputHooksProps) => {
+const useView = ({onEnter}: InputSearchHooksProps) => {
   const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       onEnter();
