@@ -18,8 +18,8 @@ const View = () => {
   } = useView();
   return (
     <div className="m-12 p-4 bg-neutral-50 rounded-2xl shadow">
-      <h1 className='text-2xl font-extrabold'>Price List</h1>
-      <div className="flex flex-row justify-end pb-2 px-4">
+      <div className="flex flex-row justify-between pb-2 px-4">
+        <h1 className='text-2xl font-extrabold'>Price List</h1>
         <a href={`${window.location.href}/create`}>
           <Button type='primary'>Tambah Data</Button>
         </a>
